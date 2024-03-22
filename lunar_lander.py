@@ -44,7 +44,7 @@ model = DQN("MlpPolicy", env, verbose=1)
 #     print(f"iteration {i}, mean reward {rewards}")
 #     vec_env.render("human")
 
-total_timesteps = int(1e5)
+total_timesteps = int(1e4)
 eval_freq = 1000
 eval_episodes = 10
 
