@@ -16,16 +16,16 @@ env = gym.make("LunarLander-v2", render_mode="rgb_array")
 # # Instantiate the agent
 model = DQN("MlpPolicy", env, verbose=1)
 # # Train the agent and display a progress bar
-model.learn(total_timesteps=int(2e5), progress_bar=True)
+# model.learn(total_timesteps=int(1e5), progress_bar=True)
 # # Save the agent
-model.save("dqn_lunar")
-del model  # delete trained model to demonstrate loading
+# model.save("dqn_lunar_lander")
+# del model  # delete trained model to demonstrate loading
 
 # Load the trained agent
 # NOTE: if you have loading issue, you can pass `print_system_info=True`
 # to compare the system on which the model was trained vs the current one
 # model = DQN.load("dqn_lunar", env=env, print_system_info=True)
-model = DQN.load("dqn_lunar", env=env)
+model = DQN.load("dqn_lunar_lander", env=env)
 
 # # Evaluate the agent
 # # NOTE: If you use wrappers with your environment that modify rewards,
@@ -41,5 +41,5 @@ obs = vec_env.reset()
 for i in range(100000):
     action, _states = model.predict(obs, deterministic=True)
     obs, rewards, dones, info = vec_env.step(action)
-    print(f"iteration {i}, mean reward {rewards}")
+    print(f"iteration {i}, reward {rewards}")
     vec_env.render("human")
